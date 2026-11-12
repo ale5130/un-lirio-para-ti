@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><meta name="theme-color" content="#f1e6fa"><title>Un lirio para ti</title><style>
+*{box-sizing:border-box}body{margin:0;min-height:100svh;display:grid;place-items:center;padding:24px 16px;background:radial-gradient(ellipse at 50% 10%,#fff8fd,#eadcf6 70%,#dfcbed);color:#422653;font-family:Georgia,serif}main{width:min(100%,400px);text-align:center;background:#fff9fccc;border:1px solid #fff;border-radius:180px 180px 28px 28px;padding:40px 20px 24px;box-shadow:0 16px 60px #58336e24}h1{font-weight:normal;font-size:clamp(2rem,8vw,2.85rem);margin:0 0 8px;letter-spacing:-.04em}button{font:inherit;cursor:pointer;color:inherit;-webkit-tap-highlight-color:transparent}button:focus-visible{outline:3px solid #754393;outline-offset:4px}#flower{border:0;background:transparent;width:min(100%,260px);padding:0 0 5px}#flower:disabled{cursor:default}.scene{height:255px;position:relative;display:block;background:radial-gradient(ellipse at 50% 45%,#ebd7f8,transparent 65%)}.stem{position:absolute;left:49%;top:104px;width:19px;height:132px;border-left:4px solid #687455;border-radius:50%;transform:rotate(8deg)}.leaf{position:absolute;left:49%;top:167px;width:68px;height:22px;background:linear-gradient(12deg,#617552,#a3aa7d);border-radius:100% 0 100% 0;transform:rotate(-27deg)}.leaf.left{left:auto;right:49%;top:195px;transform:scaleX(-1) rotate(-22deg);width:54px}.petal{position:absolute;left:calc(50% - 23px);top:39px;width:46px;height:86px;transform-origin:50% 96%;border-radius:85% 8% 82% 29%;background:linear-gradient(35deg,#79439c,#bc82dd 44%,#f8d9f3 81%,#fff4fb);box-shadow:inset 0 0 7px #f7deff77;transform:rotate(var(--closed)) scale(.66,.9);transition:transform 1s cubic-bezier(.2,.7,.3,1)}.open .petal{transform:rotate(var(--open)) scale(1,1)}.heart{position:absolute;left:calc(50% - 7px);top:112px;width:14px;height:14px;border-radius:50%;background:#ecc981;box-shadow:0 0 9px #ffdc90;opacity:0;transition:opacity .5s .45s}.open .heart{opacity:1}.label{display:inline-block;background:#633b7c;color:white;border-radius:999px;padding:12px 22px}[hidden]{display:none!important}.note{display:grid;justify-items:center;padding:9px 0 0}p{margin:0;font-size:1.19rem;line-height:1.4}@media(prefers-reduced-motion:reduce){*,*::before,*::after{animation:none!important;transition:none!important}}
+</style></head><body><main>
+<h1>Un lirio para ti</h1>
+<button id="flower" type="button" aria-controls="message">
+<span class="scene" aria-hidden="true"><span class="stem"></span><span class="leaf"></span><span class="leaf left"></span>
+<span class="petal" style="--closed:-21deg;--open:-127deg"></span>
+<span class="petal" style="--closed:19deg;--open:126deg"></span>
+<span class="petal" style="--closed:-15deg;--open:-72deg"></span>
+<span class="petal" style="--closed:13deg;--open:71deg"></span>
+<span class="petal" style="--closed:4deg;--open:11deg"></span>
+<span class="petal" style="--closed:-6deg;--open:178deg"></span>
+<span class="heart"></span></span><span class="label">Toca el lirio</span></button>
+<div class="note" aria-live="polite"><p id="message" hidden>Pensé en ti al darle vida a esta flor</p></div></main>
+<script>
+const flower = document.querySelector('#flower');
+const message = document.querySelector('#message');
+flower.addEventListener('click', () => {
+  flower.classList.add('open');
+  flower.disabled = true;
+  flower.querySelector('.label').hidden = true;
+  flower.setAttribute('aria-label', 'Lirio abierto');
+  message.hidden = false;
+});
+</script></body></html>
